@@ -9,7 +9,8 @@ let storage = multer.diskStorage({
         cb(null, "public/img/produtos");
     },
     filename: function(req, file, cb) {
-        let ext = file.originalname.split(".").pop();
+        let ext = file.originalname.split(".").pop();  //Pega o ultimo depois do . ~~ ex: dan.png  fica duas
+                                                                    //strings uma dan e outra png
         //ou
         //
         //let ext = file.originalname.split(".").slice(-1)[0]

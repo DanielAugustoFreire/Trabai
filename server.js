@@ -5,6 +5,11 @@ const homeRoute = require('./routes/homeRoute');
 const produtoRoute = require('./routes/produtoRoute');
 const marcaRoute = require('./routes/marcaRoute');
 const categoriaRoute = require('./routes/categoriaRoute');
+const loginRoute = require('./routes/loginRoute');
+
+
+const cookieParser = require('cookie-parser');
+
 
 const app = express();
 //configurando a nossa pasta public como o nosso repositorio de arquivos estáticos (css, js, imagens)
@@ -20,12 +25,15 @@ app.use(express.json());
 //configuração da nossa página de layout
 app.set('layout', './layout');
 app.use(expressLayouts);
+app.use(cookieParser());
+
 
 //definindo as rotas que o nosso sistema vai reconhecer através da url do navegador
 app.use('/', homeRoute)
 app.use('/produto', produtoRoute);
 app.use("/marcas", marcaRoute);
 app.use("/categorias", categoriaRoute);
+app.use("/login", loginRoute);
 
 
 global.CAMINHO_IMG_BROWSER = "/img/produtos/"
